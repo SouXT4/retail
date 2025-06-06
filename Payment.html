@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Two Guys Mart - Payment</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-finance-business.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><h2>Two Guys Mart</h2></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Our Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Payment Form -->
+  <div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4">Payment Information</h2>
+    <form id="payment-form">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>Name on Card</label>
+          <input type="text" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Card Number</label>
+          <input type="text" class="form-control" maxlength="19" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>Expiry Date</label>
+          <input type="text" class="form-control" placeholder="MM/YY" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>CVV</label>
+          <input type="text" class="form-control" maxlength="4" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>Total Amount (RM)</label>
+          <input type="text" class="form-control" id="total-amount" readonly>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Confirm Payment</button>
+    </form>
+  </div>
+
+  <script>
+    // Example: Load total amount from localStorage (set it before redirect)
+    document.addEventListener('DOMContentLoaded', () => {
+      const total = localStorage.getItem('cartTotal') || '0.00';
+      document.getElementById('total-amount').value = parseFloat(total).toFixed(2);
+    });
+
+    document.getElementById('payment-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert("Payment successful! Thank you for your purchase.");
+      localStorage.removeItem('cartTotal');
+      window.location.href = "index.html"; // Redirect after payment
+    });
+      <script>
+  // When "Go to Payment" button is clicked
+  document.getElementById("go-to-payment").addEventListener("click", function () {
+    const total = document.getElementById("cart-total").textContent;
+
+    // Optional: You can also store cart items if needed
+    const cartItems = document.getElementById("cart-items").innerHTML;
+
+    // Save data to localStorage
+    localStorage.setItem("cartTotal", total);
+    localStorage.setItem("cartItems", cartItems);
+
+    // Redirect to payment page
+    window.location.href = "payment.html";
+  });
+
+
+  </script>
+
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
